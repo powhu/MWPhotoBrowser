@@ -47,9 +47,9 @@
             _margin = 0, _gutter = 1;
             _marginL = 0, _gutterL = 2;
         }
-
+        
         _initialContentOffset = CGPointMake(0, CGFLOAT_MAX);
- 
+        
     }
     return self;
 }
@@ -122,7 +122,7 @@
 #pragma mark - Layout
 
 - (CGFloat)getColumns {
-    if ((UIInterfaceOrientationIsPortrait(self.interfaceOrientation))) {
+    if ((UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]))) {
         return _columns;
     } else {
         return _columnsL;
@@ -130,7 +130,7 @@
 }
 
 - (CGFloat)getMargin {
-    if ((UIInterfaceOrientationIsPortrait(self.interfaceOrientation))) {
+    if ((UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]))) {
         return _margin;
     } else {
         return _marginL;
@@ -138,7 +138,7 @@
 }
 
 - (CGFloat)getGutter {
-    if ((UIInterfaceOrientationIsPortrait(self.interfaceOrientation))) {
+    if ((UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]))) {
         return _gutter;
     } else {
         return _gutterL;
@@ -185,7 +185,7 @@
     CGFloat gutter = [self getGutter];
     CGFloat columns = [self getColumns];
     CGFloat value = floorf(((self.view.bounds.size.width - (columns - 1) * gutter - 2 * margin) / columns));
-    return CGSizeMake(value, value);
+    return CGSizeMake(value, value / 210.0 * 291.0);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
