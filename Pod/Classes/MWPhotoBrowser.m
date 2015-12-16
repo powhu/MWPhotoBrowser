@@ -132,6 +132,10 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 
 #pragma mark - View Loading
 
+-(UIToolbar *)toolBar {
+    return _toolbar;
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     
